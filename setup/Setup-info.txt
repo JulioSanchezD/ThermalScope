@@ -1,0 +1,27 @@
+THERMALSCOPE
+Your rig. A little peace of mind.
+
+Watch your PC sensors from a phone on the same home network, record named
+gaming sessions, and compare multiple runs by elapsed time.
+
+Setup installs the application into Program Files by default. A .NET runtime,
+Python, WSL, and MSI Remote Server are not required.
+
+Recordings and sensor assignments are saved separately in:
+%LOCALAPPDATA%\ThermalScope\data
+The app's /api/info endpoint reports the exact recording folder.
+Upgrades and uninstall preserve your recordings.
+
+Optional setup tasks:
+- Allow TCP 8088 on Windows Private networks, local subnet only.
+- Download and install the signed PawnIO sensor driver if it is missing.
+  This task needs an Internet connection and opens the driver's own setup.
+- Create a desktop shortcut.
+
+ThermalScope requests administrator access when launched to read CPU and
+motherboard sensors. No automatic startup, background service, overclocking,
+or fan-control configuration is installed. Closing its window stops the server.
+
+Uninstall removes the app, its shortcuts and its own firewall rule. It does
+not remove PawnIO, which may be shared by other sensor applications.
+Do not expose this unauthenticated LAN dashboard to the Internet.

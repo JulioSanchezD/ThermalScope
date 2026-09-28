@@ -1,0 +1,43 @@
+<Window x:Class="ThermalScope.Desktop.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+  Title="ThermalScope" Width="640" Height="560" ResizeMode="CanMinimize" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="#0A1018" Foreground="#E8F1F7" FontFamily="Segoe UI" Icon="assets/thermal.ico" Loaded="WindowLoaded" Closing="WindowClosing">
+  <shell:WindowChrome.WindowChrome><shell:WindowChrome CaptionHeight="58" ResizeBorderThickness="0" GlassFrameThickness="0" CornerRadius="14" /></shell:WindowChrome.WindowChrome>
+  <Border BorderBrush="#253646" BorderThickness="1" CornerRadius="14" Background="#0A1018">
+    <Grid><Grid.RowDefinitions><RowDefinition Height="58" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+      <Grid Margin="22,0,12,0">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+          <Border Width="31" Height="31" Background="#152E2C" CornerRadius="9" Margin="0,0,10,0"><Viewbox Margin="6"><Path Data="M0,17 L9,17 L14,0 L23,25 L28,9 L37,9" Stroke="#6BE1BB" StrokeThickness="3" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" /></Viewbox></Border>
+          <TextBlock Text="Thermal" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center" /><TextBlock Text="Scope" FontSize="18" FontWeight="Light" VerticalAlignment="Center" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" shell:WindowChrome.IsHitTestVisibleInChrome="True">
+          <Button Width="34" Height="30" Padding="0" Background="Transparent" BorderThickness="0" Click="MinimizeClicked" ToolTip="Minimize" AutomationProperties.Name="Minimize"><Path Data="M0,0 L10,0" Stroke="#9AAEBD" StrokeThickness="1.3" /></Button>
+          <Button x:Name="CloseButton" Width="34" Height="30" Padding="0" Background="Transparent" BorderThickness="0" Click="CloseClicked" ToolTip="Close and stop server" AutomationProperties.Name="Close ThermalScope"><Path Data="M0,0 L9,9 M9,0 L0,9" Stroke="#9AAEBD" StrokeThickness="1.3" /></Button>
+        </StackPanel>
+      </Grid>
+      <Grid Grid.Row="1" Margin="28,8,28,25">
+        <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+        <StackPanel Margin="0,0,0,20"><TextBlock Text="Your rig. A little peace of mind." FontSize="24" FontWeight="Light" /><TextBlock Text="Live gaming thermals, wherever you sit." Foreground="#839AAA" FontSize="12" Margin="0,7,0,0" /></StackPanel>
+        <Border Grid.Row="1" CornerRadius="12" BorderBrush="#25413B" BorderThickness="1" Padding="18" Margin="0,0,0,14">
+          <Border.Background><LinearGradientBrush StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#132B29" Offset="0" /><GradientStop Color="#111C26" Offset="1" /></LinearGradientBrush></Border.Background>
+          <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+            <Ellipse x:Name="StatusDot" Width="9" Height="9" Fill="#8297A6" VerticalAlignment="Top" Margin="0,6,13,0" />
+            <StackPanel Grid.Column="1"><TextBlock x:Name="StatusTitle" Text="Starting server…" FontSize="16" FontWeight="Medium" /><TextBlock x:Name="StatusDetail" Text="Preparing your dashboard." FontSize="11" Foreground="#8EA6B5" TextWrapping="Wrap" Margin="0,6,0,0" /><TextBlock x:Name="RecordingLabel" FontSize="11" Foreground="#FFAAA1" TextWrapping="Wrap" Margin="0,5,0,0" Visibility="Collapsed" /></StackPanel>
+          </Grid>
+        </Border>
+        <Border Grid.Row="2" Background="#101B27" BorderBrush="#223442" BorderThickness="1" CornerRadius="12" Padding="18" Margin="0,0,0,14">
+          <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+            <StackPanel><TextBlock Text="ON THIS PC" FontSize="9" Foreground="#839AAA" Margin="0,0,0,9" /><TextBox x:Name="LocalAddress" Text="http://localhost:8088" FontSize="17" AutomationProperties.Name="Local dashboard address" /></StackPanel>
+            <Button x:Name="OpenLocal" Grid.Column="1" Content="Open dashboard ↗" Click="OpenLocalClicked" VerticalAlignment="Center" Margin="16,0,0,0" IsEnabled="False" AutomationProperties.AutomationId="OpenDashboard" />
+          </Grid>
+        </Border>
+        <Border Grid.Row="3" Background="#101B27" BorderBrush="#223442" BorderThickness="1" CornerRadius="12" Padding="18" Margin="0,0,0,20">
+          <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+            <StackPanel><TextBlock Text="ON YOUR PHONE · SAME WI-FI" FontSize="9" Foreground="#839AAA" Margin="0,0,0,9" /><TextBox x:Name="PhoneAddress" Text="Finding your LAN address…" Foreground="#6BE1BB" FontSize="18" AutomationProperties.Name="Phone dashboard address" /><TextBlock x:Name="ExtraAddresses" Foreground="#718B9F" FontSize="10" TextWrapping="Wrap" Margin="0,7,0,0" Visibility="Collapsed" /></StackPanel>
+            <Button x:Name="CopyAddress" Grid.Column="1" Content="Copy" Click="CopyClicked" VerticalAlignment="Center" Margin="12,0,0,0" IsEnabled="False" AutomationProperties.AutomationId="CopyPhoneAddress" />
+          </Grid>
+        </Border>
+        <Button x:Name="StartStop" Grid.Row="4" Content="Starting…" Style="{StaticResource Primary}" Click="StartStopClicked" IsEnabled="False" AutomationProperties.AutomationId="StartStopServer" />
+        <StackPanel Grid.Row="5" VerticalAlignment="Bottom" Margin="0,17,0,0"><TextBlock Text="Closing this window stops the server and saves an active recording." FontSize="11" Foreground="#839AAA" TextWrapping="Wrap" /><TextBlock x:Name="Footnote" Text="WINDOWS NATIVE  ·  LOCAL BY DESIGN" FontSize="9" Foreground="#49667A" Margin="0,12,0,0" /></StackPanel>
+      </Grid>
+    </Grid>
+  </Border>
+</Window>

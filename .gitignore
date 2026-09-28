@@ -1,0 +1,12 @@
+bin/
+obj/
+app/
+data/
+data-demo/
+tools/
+dist/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+App Icon Example.jpeg
+*.user

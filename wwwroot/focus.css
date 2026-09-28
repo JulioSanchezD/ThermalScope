@@ -1,0 +1,44 @@
+.icon-button { display: grid; place-items: center; }
+.segments { flex-shrink: 0; }
+.segments button { white-space: nowrap; }
+body.focus { overflow: hidden; }
+.focus header, .focus nav, .focus footer, .focus .banner,
+.focus .intro, .focus .cards, .focus .recorder { display: none !important; }
+.focus #live-view {
+  position: fixed; inset: 0; width: 100dvw; height: 100dvh;
+  padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px;
+  background: #0a1018; z-index: 5;
+}
+.focus #live-view .lower-grid { display: contents; }
+.focus #live-view .panel {
+  display: flex; flex-direction: column; min-width: 0; min-height: 0;
+  margin: 0; padding: 16px;
+}
+.focus #live-view .panel-heading { margin-bottom: 10px; align-items: center; }
+.focus #live-view .panel-heading .eyebrow,
+.focus #live-view .legend .muted { display: none; }
+.focus #live-view .lower-grid .panel-heading { padding-right: 36px; }
+.focus #live-view .legend { margin-bottom: 10px; }
+.focus #live-view .chart-wrap { flex: 1; height: auto !important; min-height: 0; }
+.focus #focus {
+  position: absolute;
+  top: max(20px, calc(env(safe-area-inset-top) + 8px));
+  right: max(20px, calc(env(safe-area-inset-right) + 8px));
+  z-index: 6; width: 30px; height: 30px; background: #101c28;
+}
+/* Present a landscape canvas even when the phone is held in portrait. */
+@media (orientation: portrait) {
+  .focus #live-view {
+    inset: auto; top: 0; left: 100dvw; width: 100dvh; height: 100dvw;
+    transform: rotate(90deg); transform-origin: top left;
+    padding: max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)) max(12px, env(safe-area-inset-top));
+  }
+  .focus #focus { top: 20px; right: max(20px, calc(env(safe-area-inset-bottom) + 8px)); }
+}
+@media (max-height: 480px), (orientation: portrait) {
+  .focus #live-view .panel { padding: 12px; }
+  .focus #live-view h2 { font-size: 15px; }
+  .focus #live-view .legend { gap: 12px; font-size: 10px; }
+  .focus #live-view .segments button { padding: 6px 8px; font-size: 9px; }
+}

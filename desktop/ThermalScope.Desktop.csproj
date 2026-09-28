@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>assets/thermal.ico</ApplicationIcon>
+    <AssemblyName>ThermalScope.Desktop</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup><Resource Include="assets/thermal.ico" /><Compile Include="..\DataDirectories.cs" Link="DataDirectories.cs" /></ItemGroup>
+</Project>
