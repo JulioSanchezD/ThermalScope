@@ -2,11 +2,13 @@
 
 A Windows app for watching PC temperatures from a phone on your home Wi-Fi, recording named sessions, and comparing multiple runs. The dashboard identifies your CPU/GPU from discovered sensors; available readings depend on your hardware and drivers.
 
+[Download ThermalScope for Windows (v0.1.0)](https://github.com/JulioSanchezD/ThermalScope/releases/download/v0.1.0/ThermalScope-Setup-0.1.0-win-x64.exe) · [SHA-256 checksum](https://github.com/JulioSanchezD/ThermalScope/releases/download/v0.1.0/ThermalScope-Setup-0.1.0-win-x64.exe.sha256) · [Release notes](https://github.com/JulioSanchezD/ThermalScope/releases/tag/v0.1.0)
+
 ## Run
 
 ### Setup wizard
 
-Run `ThermalScope-Setup-0.1.0-win-x64.exe` from the `dist` folder (or a GitHub release when one is published). The wizard installs into `C:\Program Files\ThermalScope` by default, lets you change the destination, adds Start menu shortcuts and an optional desktop shortcut, and registers the app in Windows Installed apps. It offers optional Private-LAN firewall access and installation of the signed PawnIO driver if missing. Approve UAC; the driver task needs Internet access and opens PawnIO's own installer. If you skip those tasks, rerun setup to add them later.
+Run the downloaded `ThermalScope-Setup-0.1.0-win-x64.exe` (or the local copy from `dist` if you built it yourself). The wizard installs into `C:\Program Files\ThermalScope` by default, lets you change the destination, adds Start menu shortcuts and an optional desktop shortcut, and registers the app in Windows Installed apps. It offers optional Private-LAN firewall access and installation of the signed PawnIO driver if missing. Approve UAC; the driver task needs Internet access and opens PawnIO's own installer. If you skip those tasks, rerun setup to add them later.
 
 Installed recordings and sensor assignments live in `%LOCALAPPDATA%\ThermalScope\data`, not Program Files. Upgrading or uninstalling preserves that folder. Uninstall removes only the installed program files, shortcuts, and this installation's firewall rule; it leaves the shared sensor driver in place. Close the control window before upgrading or uninstalling so recordings finish safely. The current development/portable build continues using its existing `data` folder; setup does not silently copy or modify those recordings. To migrate them, close both copies, back up both data folders, and copy the old folder into the installed recording location only if it has no existing recordings. Run only one real collector at a time (port 8088).
 
