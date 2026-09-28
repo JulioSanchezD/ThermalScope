@@ -1,6 +1,6 @@
 # ThermalScope
 
-A Windows app for watching PC temperatures from a phone on your home Wi-Fi, recording named sessions, and comparing multiple runs. Cooling solution and workload labels are free text, not hardware presets. The dashboard identifies your CPU/GPU from discovered sensors; available readings depend on your hardware and drivers.
+A Windows app for watching PC temperatures from a phone on your home Wi-Fi, recording named sessions, and comparing multiple runs. The dashboard identifies your CPU/GPU from discovered sensors; available readings depend on your hardware and drivers.
 
 ## Run
 
